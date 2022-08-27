@@ -1,5 +1,5 @@
 GRANT ALL PRIVILEGES ON *.* TO `root` @`localhost` IDENTIFIED VIA mysql_native_password USING '*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B'
-    OR unix_socket WITH
+WITH
 GRANT OPTION;
 GRANT PROXY ON '' @'%' TO 'root' @'localhost' WITH
 GRANT OPTION;

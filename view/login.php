@@ -1,6 +1,12 @@
 <?php
 //This part here is used to get the content form the html header file, we will refactor this an make a static loader at the end.
 require "html_header.php";
+include "../connection.php";
+include "../functions/login_logic.php";
+require "../functions/check_user_login.php";
+require "../set_session.php";
+
+
 ?>
 <body>
 
@@ -8,13 +14,13 @@ require "html_header.php";
 
 
 <main>
-    <form action="../logic/login_logic.php" method="POST">
+    <form action="../functions/login_logic.php" method="POST">
         <section>
             <label for="username">Username</label>
-            <input name="username" type="text">
+            <input value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>" name="username" type="text">
             <br>
             <label for="password">Password</label>
-            <input name="password" type="password">
+            <input value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>" name="password" type="password">
         </section>
         <section>
             <input type="submit" name="send" value="Submit">
