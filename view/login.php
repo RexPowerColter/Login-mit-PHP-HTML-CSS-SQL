@@ -1,9 +1,7 @@
 <?php
 //This part here is used to get the content form the html header file, we will refactor this an make a static loader at the end.
-require "html_header.php";
+require "header.php";
 include "../connection.php";
-include "../functions/login_logic.php";
-require "../functions/check_user_login.php";
 
 
 ?>
@@ -13,7 +11,7 @@ require "../functions/check_user_login.php";
 
 
 <main>
-    <form action="../functions/login_logic.php" method="POST">
+    <form action="../controller/login.php" method="POST">
         <fieldset>
         <legend>Login</legend>
             <label for="username">Username</label>

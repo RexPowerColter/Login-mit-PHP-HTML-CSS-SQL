@@ -1,16 +1,14 @@
 <?php
-//This part here is used to get the content form the html header file, we will refactor this an make a static loader at the end.
-require "html_header.php";
-require "../functions/check_user_login.php";
-require "../functions/reset.php";
 
-login_user_check($con);
+//This part here is used to get the content form the html header file, we will refactor this an make a static loader at the end.
+require "header.php";
+require "../controller/check.php";
 ?>
 
 <h2>Password Change Screen</h2>
 
 <body>
-    <form id="login_form" action="../functions/reset.php" method="POST">
+    <form id="login_form" action="../controller/reset.php" method="POST">
         <fieldset>
             <legend>Change Password</legend>
 
