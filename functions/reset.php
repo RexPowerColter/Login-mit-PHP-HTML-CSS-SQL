@@ -12,8 +12,6 @@ if (isset($_POST["send"])) {
     $result = $login_query->get_result();
     $data_login = $result->fetch_assoc();
 
-    var_dump($data_login);
-
 if (md5($_POST["password"]) == $data_login["password"] && $_POST["new_password"] == $_POST["confirm_password"] && md5($_POST["new_password"]) != $data_login["password"] && md5($_POST["confirm_password"]) != $data_login["password"] && $_POST["new_password"] != '' && $_POST["confirm_password"] != '') {
     $ps = $con->prepare("UPDATE login SET password = ? WHERE login.id = ?");
     $ps->bind_param("si", md5($_POST["new_password"]), $data_login["id"]);
@@ -27,6 +25,4 @@ if (md5($_POST["password"]) == $data_login["password"] && $_POST["new_password"]
     echo "<p id='failed'> &#10007 Fill out all the fields.";
 }
 
-
 }
-

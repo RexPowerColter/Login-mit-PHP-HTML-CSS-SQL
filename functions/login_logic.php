@@ -17,7 +17,8 @@ if (isset($_POST["send"])) {
     $data_login = $result->fetch_assoc();
 
 
-    if ($_POST["username"] == $data_login["username"] && md5($_POST["password"]) == $data_login["password"]) {
+
+    if ($_POST["username"] != "" && $_POST["password"] != "" && $_POST["username"] == $data_login["username"] && md5($_POST["password"]) == $data_login["password"]) {
         $_SESSION["logged_in"] = true;
         $_SESSION["user"] = $_POST["username"];
 

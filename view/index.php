@@ -9,7 +9,7 @@ login_user_check($con);
 
 <body>
 
-<p>Hello this is the indexpage :)</p>
+<p>Hello this is the indexpage :)<br> Content here needs to be updated aswell!</p>
     
 </body>
 </html>
