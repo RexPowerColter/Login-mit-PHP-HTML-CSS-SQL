@@ -4,7 +4,6 @@ require "html_header.php";
 include "../connection.php";
 include "../functions/login_logic.php";
 require "../functions/check_user_login.php";
-require "../set_session.php";
 
 
 ?>

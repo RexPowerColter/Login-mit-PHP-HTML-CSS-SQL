@@ -3,7 +3,6 @@
 require "html_header.php";
 require "../functions/check_user_login.php";
 require "../functions/reset.php";
-require "../set_session.php";
 
 login_user_check($con);
 ?>
