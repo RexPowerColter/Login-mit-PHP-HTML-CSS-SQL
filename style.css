@@ -22,3 +22,11 @@ p {
 	padding: 1rem;
 	border-radius: 1rem;
 }
+
+.link_btns {
+	background-color: #e9e9ed;
+	border-radius: 5px;
+	padding: 2px;
+	border: solid #8f8f9d 2px;
+	margin: 1rem;
+}

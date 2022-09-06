@@ -24,4 +24,6 @@ require "../controller/check.php";
         </fieldset>
     </form>
 
+    <a href="index.php" class="link_btns">Back</a>
+
 </html>
