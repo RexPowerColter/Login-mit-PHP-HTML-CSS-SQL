@@ -1,5 +1,6 @@
 <?php
 //This part here is used to get the content form the html header file, we will refactor this an make a static loader at the end.
+
 require "header.php";
 include "../connection.php";
 
@@ -7,7 +8,7 @@ include "../connection.php";
 ?>
 <body>
 
-<h1>Login Screen (Name here is placeholder for now...)</h1>
+<h1>Login Screen</h1>
 
 
 <main>

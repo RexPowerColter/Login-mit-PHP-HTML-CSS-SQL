@@ -23,8 +23,6 @@ class Authorization {
             $result = $login_query->get_result();
             $data_login = $result->fetch_assoc();
 
-
-
             if ($_POST["username"] != "" && $_POST["password"] != "" && $_POST["username"] == $data_login["username"] && md5($_POST["password"]) == $data_login["password"]) {
                 $_SESSION["logged_in"] = true;
                 $_SESSION["user"] = $_POST["username"];
@@ -42,6 +40,7 @@ class Authorization {
 
     function logout() {
         unset($_SESSION["user"]);
+        unset($_SESSION["color"]);
         header("location: ../view/login.php");
     }
 
@@ -88,10 +87,27 @@ class Authorization {
             $result = $login_query->get_result();
             $data_login = $result->fetch_assoc();
 
+            !isset($_SESSION['color']) ? $_SESSION['color'] = $data_login['color'] : $data_login['color'];
             $res = true;
         } else {
             $res = false;
         }
         return $res;
+    }
+
+    function color() {
+
+        $con = $this->con;
+
+        if (isset($_POST["send"])) {
+
+            $login_query = $con->prepare("UPDATE login SET color = ? WHERE login.username = ?");
+            $login_query->bind_param("ss", $_POST["color"], $_SESSION["user"]);
+            $login_query->execute();
+
+            $_SESSION["color"] = $_POST["color"];
+
+            header("location: ../view/index.php");
+        }
     }
 }
