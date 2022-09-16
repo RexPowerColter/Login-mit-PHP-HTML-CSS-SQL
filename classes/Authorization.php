@@ -11,6 +11,16 @@ class Authorization {
         $this->con = $con;
     }
 
+    static function form_msg($outputMsg) {
+
+      
+    
+        // Add new message to messages array in session storage
+        $_SESSION['messages'][] = $outputMsg . '</p><br>';
+    
+    
+    }
+
     function login($post_data) {
 
         $con = $this->con;
@@ -26,16 +36,26 @@ class Authorization {
             if ($_POST["username"] != "" && $_POST["password"] != "" && $_POST["username"] == $data_login["username"] && md5($_POST["password"]) == $data_login["password"]) {
                 $_SESSION["logged_in"] = true;
                 $_SESSION["user"] = $_POST["username"];
-
+                $outputMsg = "<p id='worked'> &#10004; Login Successfull";
+                $this->form_msg($outputMsg);
                 header("location: ../view/index.php");
             } elseif (!isset($data_login["username"])) {
-                echo "<p id='failed'> &#10007 User does not exist or the field isnt filled out.";
+                $outputMsg = "<p id='failed'> &#10007 User does not exist or the field isnt filled out.";
+                $this->form_msg($outputMsg);
+                header("location: ../view/login.php");
+
             } elseif (!isset($data_login["password"])) {
-                echo "<p id='failed'> &#10007 Password is not set.";
+                $outputMsg = "<p id='failed'> &#10007 Password is not set.";
+                $this->form_msg($outputMsg);
+                header("location: ../view/login.php");
+
             } else {
-                echo "<p id='failed'> &#10007 Username or password is wrong";
+                $outputMsg = "<p id='failed'> &#10007 Username or password is wrong";
+                $this->form_msg($outputMsg);
+                header("location: ../view/login.php");
             }
         }
+
     }
 
     function logout() {
@@ -62,13 +82,20 @@ class Authorization {
             $ps = $con->prepare("UPDATE login SET password = ? WHERE login.id = ?");
             $ps->bind_param("si", md5($_POST["new_password"]), $data_login["id"]);
             $ps->execute();
+
+            $outputMsg = "<p id='worked'> &#10004 Successfull Password Change";
+            $this->form_msg($outputMsg);
           
             header("location: ../view/index.php");
             $_SESSION["logged_in"] = true;
         } elseif ($_POST["confirm_password"] == '' && $_POST["new_password"] == '') {
-            echo "<p id='failed'> &#10007 New password cannot be null.";
+            $outputMsg = "<p id='failed'> &#10007 New Password cannot be null";
+            $this->form_msg($outputMsg);
+            header("location: ../view/reset_pwd.php");
         } else {
-            echo "<p id='failed'> &#10007 Fill out all the fields.";
+            $outputMsg = "<p id='failed'> &#10007 Fill out all the fields";
+            $this->form_msg($outputMsg);
+            header("location: ../view/reset_pwd.php");
         }
         
         }
@@ -86,6 +113,8 @@ class Authorization {
             $login_query->execute();
             $result = $login_query->get_result();
             $data_login = $result->fetch_assoc();
+
+            
 
             !isset($_SESSION['color']) ? $_SESSION['color'] = $data_login['color'] : $data_login['color'];
             $res = true;
@@ -110,4 +139,6 @@ class Authorization {
             header("location: ../view/index.php");
         }
     }
+
+  
 }
