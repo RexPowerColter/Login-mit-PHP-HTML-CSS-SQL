@@ -1,14 +1,13 @@
-# Login-mit-PHP-HTML-CSS-SQL
+# Installation Guide 🤯:
 
-Installation Guide:
+To get the programm up an Running on your local machine follow these steps 👨🏼‍💻:
 
-To get the programm up an Running on your local machine you need to use the two sql queries:
-add_user.sql and add_table.sql in this order.
+    1) In your Host dir make a folder called: Login-mit-PHP-HTML-CSS-SQL this is where you pull the projekt into. ➕💾
 
-After that you can call up the programm on the URL: https://localhost/Login-mit-PHP-HTML-CSS-SQL/view/login.php
+    2) Add a Database called: login ➕💽
 
-classes:
+    3) Use the SQL Query called: add_user.sql ➕📀
 
-all login functions in one class
-login, logout, reset
+    4) Use the SQL Query called: add_table.sql ➕📀
 
+After that you can call up the programm on the URL: <localhost/Login-mit-PHP-HTML-CSS-SQL/view/login.php> 🤗
